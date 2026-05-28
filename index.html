@@ -56,7 +56,6 @@
             border-radius: 6px;
         }
 
-        /* ── Animations ── */
         @keyframes scrollLine {
             0% {
                 transform: translateY(-100%)
@@ -623,11 +622,12 @@
             border-color: #D7E2EA;
         }
 
+        /* ── UPDATED: cert body with fixed image column width ── */
         .cert-body {
             flex: 1;
             min-height: 0;
             display: grid;
-            grid-template-columns: auto 1fr;
+            grid-template-columns: 300px 1fr;
             gap: 0;
         }
 
@@ -670,20 +670,24 @@
             color: #D7E2EA;
         }
 
+        /* ── UPDATED: cert visual with controlled height ── */
         .cert-visual {
             position: relative;
             overflow: hidden;
-            border-radius: 0 0 46px 0;
+            border-radius: 20px 20px 44px 20px;
             background: #1a1a1a;
+            min-height: 0;
+            /* ADD THIS */
+            height: 100%;
+            /* ADD THIS */
         }
 
         .cert-visual img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center center;
             display: block;
-            transition: transform .5s ease;
         }
 
         .cert-inner:hover .cert-visual img {
@@ -816,14 +820,16 @@
             border-color: #D7E2EA;
         }
 
-        .project-body {
-            flex: 1;
-            min-height: 0;
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 0;
-        }
-
+        /* ── UPDATED: project body with fixed image column width ── */
+       .project-body {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 1fr;   /* ADD THIS */
+    gap: 0;
+    align-items: stretch;      /* ADD THIS */
+}
         .project-body-left {
             display: flex;
             flex-direction: column;
@@ -862,20 +868,24 @@
             color: #D7E2EA;
         }
 
+        /* ── UPDATED: project visual with controlled height ── */
         .project-visual {
             position: relative;
             overflow: hidden;
-            border-radius: 0 0 46px 0;
+            border-radius: 20px 20px 44px 20px;
             background: #1a1a1a;
+            min-height: 0;
+            /* ADD THIS */
+            height: 100%;
+            /* ADD THIS */
         }
 
         .project-visual img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center top;
+            object-position: center 40%;
             display: block;
-            transition: transform .5s ease;
         }
 
         .project-inner:hover .project-visual img {
@@ -927,7 +937,6 @@
             font-size: clamp(.85rem, 1.4vw, 1.1rem);
         }
 
-        /* ── Grid layout ── */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -942,7 +951,6 @@
             }
         }
 
-        /* ── Shared card base ── */
         .contact-info-card,
         .contact-form-card {
             border-radius: 40px;
@@ -957,7 +965,6 @@
             border-color: rgba(215, 226, 234, .25);
         }
 
-        /* ── Info card ── */
         .cinfo-title {
             font-size: clamp(.9rem, 1.4vw, 1.1rem);
             font-weight: 600;
@@ -1026,7 +1033,6 @@
             margin: 2rem 0;
         }
 
-        /* ── Social row ── */
         .social-row {
             display: flex;
             gap: .75rem;
@@ -1053,7 +1059,6 @@
             transform: translateY(-3px);
         }
 
-        /* ── Form card ── */
         .cform {
             display: flex;
             flex-direction: column;
@@ -1141,7 +1146,6 @@
             text-align: center;
         }
 
-        /* ── Footer ── */
         .footer-bar {
             display: flex;
             flex-direction: column;
@@ -1169,7 +1173,6 @@
             color: rgba(215, 226, 234, .5);
         }
 
-        /* Scroll reveal */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -1181,7 +1184,7 @@
             transform: translateY(0);
         }
 
-        /* Mobile tweaks */
+        /* ── Mobile tweaks ── */
         @media(max-width:640px) {
 
             .cert-body,
@@ -1197,8 +1200,14 @@
 
             .cert-visual,
             .project-visual {
-                height: 220px;
+                height: 200px;
+                max-height: 200px;
                 border-radius: 0 0 20px 0;
+            }
+
+            .cert-visual img,
+            .project-visual img {
+                height: 200px;
             }
 
             .cert-top,
@@ -1229,6 +1238,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#certificates">Certificates</a></li>
                     <li><a href="#projects">Projects</a></li>
+                    <li><a href="#resume">Resume</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <a href="mailto:tejaskhanavate1@gmail.com" class="email-btn">Email me</a>
@@ -1802,6 +1812,29 @@
 
         </div>
     </section>
+    <!-- ══════════ RESUME ══════════ -->
+<section id="resume">
+    <h2 class="hero-heading contact-heading reveal">Resume</h2>
+    <p class="contact-sub reveal">My professional background & experience</p>
+
+    <div style="max-width:72rem;margin:0 auto;padding:0 0 4rem;">
+        <div style="border-radius:40px;border:2px solid rgba(215,226,234,.12);background:#0f0f0f;overflow:hidden;padding:2rem;" class="reveal">
+            <iframe 
+                src="te.png" 
+                width="100%" 
+                height="800px" 
+                style="border:none;border-radius:24px;display:block;"
+                title="Tejas Khanavate Resume">
+            </iframe>
+        </div>
+
+        <div style="display:flex;justify-content:center;margin-top:2rem;" class="reveal">
+            <a href="tejas resume123.pdf" download="Tejas_Khanavate_Resume.pdf" class="contact-btn">
+                Download Resume ↓
+            </a>
+        </div>
+    </div>
+</section>
 
     <!-- ══════════ CONTACT ══════════ -->
     <section id="contact">
