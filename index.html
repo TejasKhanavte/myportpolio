@@ -13,994 +13,2032 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         
-    :root {
-        --primary: #3b82f6;
-        --primary-dark: #2563eb;
-        --text: #1f2937;
-        --text-light: #6b7280;
-        --background: #f9fafb;
-        --card: #ffffff;
-        --badge-active-bg: #22c55e;
-        --badge-active-text: #ffffff;
-    }
-
-    .dark {
-        --primary: #60a5fa;
-        --primary-dark: #3b82f6;
-        --text: #f3f4f6;
-        --text-light: #d1d5db;
-        --background: #111827;
-        --card: #1f2937;
-        --badge-active-bg: #16a34a;
-        --badge-active-text: #ffffff;
-    }
-
-    /* Base body & section styles */
-    body {
-        background-color: var(--background);
-        color: var(--text);
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .section {
-        padding: 4rem 1rem; /* Kept as-is for consistency */
-    }
-
-    /* NEW: Container for centering content */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-    }
-
-    .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        color: var(--primary-dark);
-        margin-bottom: 1rem;
-    }
-
-    .section-description {
-        max-width: 600px;
-        margin: 0 auto 3rem auto;
-        text-align: center;
-        color: var(--text-light);
-        font-size: 1.1rem;
-    }
-
-    /* UPDATED: Certificates grid - Reduced min-width from 280px to 250px for smaller boxes */
-    .certificates-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Smaller cards */
-        gap: 1.5rem; /* Reduced gap from 2rem for tighter layout */
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    /* UPDATED: Individual certificate card - Added border and reduced shadow for compact feel */
-    .certificate-card {
-        background-color: var(--card);
-        border-radius: 0.75rem;
-        overflow: hidden;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.08); /* Lighter shadow */
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        border: 1px solid rgba(0,0,0,0.05); /* Subtle border for definition */
-    }
-
-    .certificate-card:hover {
-        transform: translateY(-3px); /* Reduced hover lift from -5px */
-        box-shadow: 0 6px 12px rgba(0,0,0,0.12); /* Softer hover shadow */
-    }
-
-    /* UPDATED: Certificate image - Fixed height for consistent sizing */
-    .certificate-image {
-        height: 150px; /* Fixed height to control box size */
-        overflow: hidden;
-    }
-
-    .certificate-image img {
-        width: 100%;
-        height: 100%; /* Fill the container */
-        object-fit: cover; /* Maintain aspect ratio without distortion */
-        display: block;
-    }
-
-    /* UPDATED: Content padding - Reduced from 1.5rem to 1rem for compactness */
-    .certificate-content {
-        padding: 1rem; /* Smaller padding */
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* UPDATED: Title - Slightly smaller font */
-    .certificate-content h3 {
-        margin: 0 0 0.5rem 0;
-        font-size: 1.25rem; /* Reduced from 1.5rem */
-        color: var(--primary);
-    }
-
-    .certificate-content p {
-        margin: 0 0 1rem 0;
-        color: var(--text-light);
-        flex-grow: 1;
-        font-size: 0.95rem; /* Slightly smaller text */
-    }
-
-    .certificate-meta {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: auto;
-    }
-
-    .issue-date {
-        font-size: 0.85rem; /* Slightly smaller */
-        color: var(--text-light);
-    }
-
-    .status-badge {
-        padding: 0.25rem 0.75rem;
-        background-color: var(--badge-active-bg);
-        color: var(--badge-active-text);
-        font-size: 0.8rem;
-        font-weight: bold;
-        border-radius: 999px;
-        white-space: nowrap;
-    }
-
-    /* Responsive tweaks - Enhanced for smaller screens */
-    @media (max-width: 768px) {
-        .section-title {
-            font-size: 2rem;
+  *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        .certificates-grid {
-            grid-template-columns: 1fr; /* Single column on mobile */
-            gap: 1rem; /* Even smaller gap */
-            max-width: 100%;
-        }
-        .certificate-content {
-            padding: 0.75rem; /* Extra small padding on mobile */
-        }
-        .certificate-content h3 {
-            font-size: 1.1rem;
-        }
-        .certificate-image {
-            height: 120px; /* Smaller image on mobile */
-        }
-    }
 
-    @media (max-width: 480px) {
-        .certificates-grid {
+        html,
+        body {
+            background: #0c0c0c;
+            font-family: 'Kanit', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            min-height: 100vh;
+            color: #d7e2ea;
+            overflow-x: hidden;
+        }
+
+        img {
+            -webkit-user-drag: none;
+            user-select: none;
+        }
+
+        .hero-heading {
+            background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            background: #0c0c0c;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #222;
+            border-radius: 6px;
+        }
+
+        /* ── Animations ── */
+        @keyframes scrollLine {
+            0% {
+                transform: translateY(-100%)
+            }
+
+            100% {
+                transform: translateY(200%)
+            }
+        }
+
+        @keyframes pulseFade {
+
+            0%,
+            100% {
+                opacity: .5
+            }
+
+            50% {
+                opacity: 1
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-80px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(80px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0)
+            }
+        }
+
+        /* ══ HERO ══ */
+        #hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+
+        #hero video {
+            position: absolute;
+            inset: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        #hero .overlay-lr {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, .82), rgba(0, 0, 0, .35), rgba(0, 0, 0, .42));
+        }
+
+        #hero .overlay-tb {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, .4), transparent, rgba(0, 0, 0, .72));
+        }
+
+        #hero .content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        #hero nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2.5rem;
+            animation: fadeInDown .7s ease forwards;
+        }
+
+        #hero nav ul {
+            list-style: none;
+            display: flex;
+            gap: 3rem;
+        }
+
+        #hero nav a {
+            color: rgba(255, 255, 255, .8);
+            text-decoration: none;
+            font-size: .75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            transition: color .2s;
+        }
+
+        #hero nav a:hover {
+            color: #fff;
+        }
+
+        .email-btn {
+            display: inline-flex;
+            align-items: center;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, .22);
+            background: rgba(255, 255, 255, .1);
+            padding: .5rem 1.25rem;
+            font-size: .65rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            color: #fff;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            transition: background .2s, transform .2s;
+        }
+
+        .email-btn:hover {
+            background: rgba(255, 255, 255, .2);
+            transform: scale(1.03);
+        }
+
+        #hero .middle {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        #hero .middle .inner {
+            width: 100%;
+            max-width: 80rem;
+            padding: 0 2.5rem;
+        }
+
+        .hero-label {
+            font-size: .65rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .35em;
+            color: rgba(255, 255, 255, .6);
+            margin-bottom: 1rem;
+            animation: fadeInUp .7s .3s ease both;
+        }
+
+        .hero-name {
+            font-size: clamp(3rem, 12vw, 10.5rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: .88;
+            letter-spacing: -.02em;
+            color: #fff;
+            animation: fadeInUp .7s .5s ease both;
+        }
+
+        .hero-sub {
+            margin-top: 1.75rem;
+            font-size: clamp(.6rem, 1.2vw, .875rem);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .3em;
+            color: rgba(255, 255, 255, .75);
+            animation: fadeInUp .7s .85s ease both;
+        }
+
+        #hero .bottom-bar {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 0 2.5rem 3rem;
+        }
+
+        .scroll-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .75rem;
+            text-decoration: none;
+            animation: fadeInUp .7s 1.1s ease both;
+        }
+
+        .scroll-indicator span {
+            font-size: .6rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .35em;
+            color: rgba(255, 255, 255, .7);
+            transition: color .2s;
+        }
+
+        .scroll-indicator:hover span {
+            color: #fff;
+        }
+
+        .scroll-line {
+            position: relative;
+            height: 3rem;
+            width: 1px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, .2);
+        }
+
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            inset-x: 0;
+            top: 0;
+            height: 50%;
+            background: #fff;
+            animation: scrollLine 1.8s ease-in-out infinite;
+        }
+
+        .mute-area {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            animation: fadeInUp .7s 1.1s ease both;
+        }
+
+        .sound-hint {
+            font-size: .6rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .25em;
+            color: rgba(255, 255, 255, .8);
+            animation: pulseFade 2s ease-in-out infinite;
+        }
+
+        .mute-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 3rem;
+            width: 3rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, .2);
+            background: rgba(255, 255, 255, .1);
+            color: #fff;
+            backdrop-filter: blur(12px);
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+        }
+
+        .mute-btn:hover {
+            background: rgba(255, 255, 255, .2);
+            transform: scale(1.1);
+        }
+
+        /* ══ ABOUT ══ */
+        #about {
+            position: relative;
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 5rem 2.5rem;
+        }
+
+        .about-corner {
+            pointer-events: none;
+            position: absolute;
+            opacity: 0;
+        }
+
+        .about-corner.tl {
+            top: 4%;
+            left: 4%;
+            width: clamp(60px, 14vw, 210px);
+            animation: fadeInLeft .9s .1s ease both;
+        }
+
+        .about-corner.bl {
+            bottom: 8%;
+            left: 10%;
+            width: clamp(55px, 12vw, 180px);
+            animation: fadeInLeft .9s .25s ease both;
+        }
+
+        .about-corner.tr {
+            top: 4%;
+            right: 4%;
+            width: clamp(60px, 14vw, 210px);
+            animation: fadeInRight .9s .15s ease both;
+        }
+
+        .about-corner.br {
+            bottom: 8%;
+            right: 10%;
+            width: clamp(65px, 15vw, 220px);
+            animation: fadeInRight .9s .3s ease both;
+        }
+
+        .about-corner img {
+            width: 100%;
+            height: auto;
+        }
+
+        .about-center {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+            text-align: center;
+        }
+
+        .about-heading {
+            font-size: clamp(3rem, 12vw, 160px);
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .about-text {
+            font-weight: 500;
+            line-height: 1.6;
+            color: #D7E2EA;
+            max-width: 560px;
+            font-size: clamp(1rem, 2vw, 1.35rem);
+        }
+
+        .about-text span {
+            color: rgba(215, 226, 234, .2);
+            transition: color .3s;
+        }
+
+        .about-text span.lit {
+            color: #D7E2EA;
+        }
+
+        .skills-grid {
+            width: 100%;
+            max-width: 48rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skill-row {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+
+        @media(min-width:640px) {
+            .skill-row {
+                flex-direction: row;
+                align-items: baseline;
+                gap: 1.25rem;
+            }
+        }
+
+        .skill-label {
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            color: rgba(215, 226, 234, .4);
+            white-space: nowrap;
+        }
+
+        @media(min-width:640px) {
+            .skill-label {
+                width: 11rem;
+                text-align: right;
+                flex-shrink: 0;
+            }
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+        }
+
+        .skill-tag {
+            border-radius: 9999px;
+            border: 1px solid rgba(215, 226, 234, .15);
+            background: rgba(215, 226, 234, .03);
+            padding: .25rem .75rem;
+            font-size: .875rem;
+            color: rgba(215, 226, 234, .8);
+            transition: border-color .2s, color .2s;
+        }
+
+        .skill-tag:hover {
+            border-color: rgba(215, 226, 234, .4);
+            color: #D7E2EA;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            padding: .875rem 3rem;
+            font-size: .875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            color: #fff;
+            text-decoration: none;
+            transition: transform .2s;
+            background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%);
+            box-shadow: 0 4px 4px rgba(181, 1, 167, .25), 4px 4px 12px #7721B1 inset;
+            outline: 2px solid #fff;
+            outline-offset: -3px;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* ══ CERTIFICATES ══ */
+        #certificates {
+            position: relative;
+            width: 100%;
+            background: #0C0C0C;
+            border-radius: 60px 60px 0 0;
+            padding: 5rem 2.5rem 8rem;
+        }
+
+        .certificates-heading {
+            font-size: clamp(3rem, 12vw, 160px);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #D7E2EA;
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 5rem;
+        }
+
+        .cert-card {
+            position: sticky;
+            width: 100%;
+            height: 88vh;
+            margin-bottom: 0;
+        }
+
+        .cert-inner {
+            position: relative;
+            height: 100%;
+            border-radius: 48px;
+            border: 2px solid rgba(215, 226, 234, .2);
+            background: #0f0f0f;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform-origin: top center;
+            transition: transform .1s linear;
+        }
+
+        .cert-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 2rem 2.5rem 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .cert-meta {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .cert-num {
+            flex-shrink: 0;
+            font-size: clamp(2rem, 7vw, 80px);
+            font-weight: 900;
+            color: #D7E2EA;
+            line-height: 1;
+        }
+
+        .cert-info {
+            display: flex;
+            flex-direction: column;
+            gap: .35rem;
+            padding-top: .4rem;
+        }
+
+        .cert-issuer {
+            font-size: clamp(.6rem, 1.1vw, .85rem);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            color: rgba(215, 226, 234, .45);
+        }
+
+        .cert-name {
+            font-size: clamp(1rem, 1.9vw, 1.7rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #D7E2EA;
+            line-height: 1.15;
+        }
+
+        .cert-date {
+            font-size: clamp(.6rem, .9vw, .8rem);
+            font-weight: 300;
+            letter-spacing: .1em;
+            color: rgba(215, 226, 234, .38);
+            text-transform: uppercase;
+        }
+
+        .verify-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border-radius: 9999px;
+            border: 2px solid rgba(215, 226, 234, .4);
+            padding: .6rem 1.8rem;
+            font-size: .8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: #D7E2EA;
+            text-decoration: none;
+            white-space: nowrap;
+            align-self: flex-start;
+            transition: background .2s, color .2s, border-color .2s;
+        }
+
+        .verify-btn:hover {
+            background: rgba(215, 226, 234, .1);
+            border-color: #D7E2EA;
+        }
+
+        .cert-body {
+            flex: 1;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0;
+        }
+
+        .cert-body-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: .8rem;
+            padding: 0 2rem 2rem 2.5rem;
+            max-width: 320px;
+        }
+
+        .cert-desc {
+            font-size: clamp(.75rem, 1.1vw, .92rem);
+            font-weight: 300;
+            color: rgba(215, 226, 234, .55);
+            line-height: 1.65;
+        }
+
+        .cert-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .45rem;
+        }
+
+        .cert-skill-tag {
+            border-radius: 9999px;
+            border: 1px solid rgba(215, 226, 234, .18);
+            background: rgba(215, 226, 234, .05);
+            padding: .28rem .85rem;
+            font-size: .72rem;
+            font-weight: 400;
+            color: rgba(215, 226, 234, .65);
+            transition: border-color .2s, background .2s, color .2s;
+        }
+
+        .cert-skill-tag:hover {
+            border-color: rgba(215, 226, 234, .5);
+            background: rgba(215, 226, 234, .08);
+            color: #D7E2EA;
+        }
+
+        .cert-visual {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 46px 0;
+            background: #1a1a1a;
+        }
+
+        .cert-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform .5s ease;
+        }
+
+        .cert-inner:hover .cert-visual img {
+            transform: scale(1.03);
+        }
+
+        .cert-inner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 3rem;
+            right: 3rem;
+            height: 3px;
+            border-radius: 0 0 3px 3px;
+            background: linear-gradient(90deg, #B600A8, #7621B0, #BE4C00);
+            opacity: 0;
+            transition: opacity .4s;
+            z-index: 2;
+        }
+
+        .cert-inner:hover::before {
+            opacity: 1;
+        }
+
+        /* ══ PROJECTS ══ */
+        #projects {
+            position: relative;
+            z-index: 10;
+            margin-top: -3.5rem;
+            width: 100%;
+            background: #0C0C0C;
+            border-radius: 60px 60px 0 0;
+            padding: 5rem 2.5rem 6rem;
+        }
+
+        .projects-heading {
+            font-size: clamp(3rem, 12vw, 160px);
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 5rem;
+        }
+
+        .project-card {
+            position: sticky;
+            width: 100%;
+            height: 88vh;
+            margin-bottom: 0;
+        }
+
+        .project-inner {
+            height: 100%;
+            border-radius: 48px;
+            border: 2px solid rgba(215, 226, 234, .25);
+            background: #0f0f0f;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transform-origin: top center;
+            transition: transform .1s linear;
+        }
+
+        .project-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 2rem 2.5rem 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .project-meta {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .project-num {
+            flex-shrink: 0;
+            font-size: clamp(2rem, 7vw, 80px);
+            font-weight: 900;
+            color: #D7E2EA;
+            line-height: 1;
+        }
+
+        .project-info {
+            display: flex;
+            flex-direction: column;
+            gap: .35rem;
+            padding-top: .4rem;
+        }
+
+        .project-cat {
+            font-size: clamp(.6rem, 1.1vw, .85rem);
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            color: rgba(215, 226, 234, .45);
+        }
+
+        .project-name {
+            font-size: clamp(1rem, 1.9vw, 1.7rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #D7E2EA;
+            line-height: 1.15;
+        }
+
+        .live-btn {
+            display: inline-flex;
+            align-items: center;
+            flex-shrink: 0;
+            border-radius: 9999px;
+            border: 2px solid rgba(215, 226, 234, .5);
+            padding: .6rem 1.8rem;
+            font-size: .8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: #D7E2EA;
+            text-decoration: none;
+            white-space: nowrap;
+            align-self: flex-start;
+            transition: background .2s, border-color .2s;
+        }
+
+        .live-btn:hover {
+            background: rgba(215, 226, 234, .1);
+            border-color: #D7E2EA;
+        }
+
+        .project-body {
+            flex: 1;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0;
+        }
+
+        .project-body-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: .8rem;
+            padding: 0 2rem 2rem 2.5rem;
+            max-width: 300px;
+        }
+
+        .project-desc {
+            font-size: clamp(.75rem, 1.1vw, .92rem);
+            font-weight: 300;
+            color: rgba(215, 226, 234, .5);
+            line-height: 1.65;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .45rem;
+        }
+
+        .proj-tag {
+            border-radius: 9999px;
+            border: 1px solid rgba(215, 226, 234, .18);
+            background: rgba(215, 226, 234, .05);
+            padding: .28rem .85rem;
+            font-size: .72rem;
+            font-weight: 400;
+            color: rgba(215, 226, 234, .6);
+            transition: border-color .2s, color .2s;
+        }
+
+        .proj-tag:hover {
+            border-color: rgba(215, 226, 234, .5);
+            color: #D7E2EA;
+        }
+
+        .project-visual {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 46px 0;
+            background: #1a1a1a;
+        }
+
+        .project-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform .5s ease;
+        }
+
+        .project-inner:hover .project-visual img {
+            transform: scale(1.03);
+        }
+
+        .project-inner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 3rem;
+            right: 3rem;
+            height: 3px;
+            border-radius: 0 0 3px 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
+            opacity: 0;
+            transition: opacity .4s;
+            z-index: 2;
+        }
+
+        .project-inner:hover::before {
+            opacity: 1;
+        }
+
+        /* ══ CONTACT ══ */
+        #contact {
+            position: relative;
+            width: 100%;
+            background: #0C0C0C;
+            padding: 6rem 2.5rem 5rem;
+        }
+
+        .contact-heading {
+            font-size: clamp(3rem, 12vw, 160px);
+            font-weight: 900;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .contact-sub {
+            text-align: center;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            color: rgba(215, 226, 234, .6);
+            margin-bottom: 5rem;
+            font-size: clamp(.85rem, 1.4vw, 1.1rem);
+        }
+
+        /* ── Grid layout ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1.4fr;
+            }
+        }
+
+        /* ── Shared card base ── */
+        .contact-info-card,
+        .contact-form-card {
+            border-radius: 40px;
+            border: 2px solid rgba(215, 226, 234, .12);
+            background: #0f0f0f;
+            padding: 2.5rem;
+            transition: border-color .3s;
+        }
+
+        .contact-info-card:hover,
+        .contact-form-card:hover {
+            border-color: rgba(215, 226, 234, .25);
+        }
+
+        /* ── Info card ── */
+        .cinfo-title {
+            font-size: clamp(.9rem, 1.4vw, 1.1rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: rgba(215, 226, 234, .5);
+            margin-bottom: 2rem;
+        }
+
+        .cinfo-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .cinfo-item {
+            display: flex;
+            align-items: flex-start;
             gap: 1rem;
         }
-        .certificate-card {
-            border-radius: 0.5rem;
+
+        .cinfo-icon {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(215, 226, 234, .2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(215, 226, 234, .04);
+            transition: border-color .25s, background .25s;
         }
-        .section {
-            padding: 2rem 1rem; /* Reduce section padding on very small screens */
+
+        .cinfo-item:hover .cinfo-icon {
+            border-color: rgba(215, 226, 234, .45);
+            background: rgba(215, 226, 234, .08);
         }
-    }
 
-    /* Existing styles for other sections (nav, hero, etc.) - Kept unchanged */
-    .nav-link {
-        position: relative;
-    }
+        .cinfo-label {
+            font-size: .65rem;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            color: rgba(215, 226, 234, .4);
+            margin-bottom: .2rem;
+        }
 
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -2px;
-        left: 0;
-        background-color: var(--primary);
-        transition: width 0.3s ease;
-    }
+        .cinfo-value {
+            font-size: clamp(.85rem, 1.2vw, 1rem);
+            font-weight: 500;
+            color: #D7E2EA;
+            text-decoration: none;
+            transition: color .2s;
+            word-break: break-all;
+            display: block;
+        }
 
-    .nav-link:hover::after {
-        width: 100%;
-    }
+        .cinfo-value:hover {
+            color: #fff;
+        }
 
-    .project-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .cinfo-divider {
+            height: 1px;
+            background: rgba(215, 226, 234, .1);
+            margin: 2rem 0;
+        }
 
-    .project-card:hover {
-        transform: translateY(-5px);
-    }
+        /* ── Social row ── */
+        .social-row {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+            margin-top: 1.25rem;
+        }
 
-    #particles-js {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
+        .social-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: 1px solid rgba(215, 226, 234, .2);
+            background: rgba(215, 226, 234, .04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: border-color .25s, background .25s, transform .25s;
+        }
 
-    .card {
-        background-color: var(--card);
-        transition: all 0.3s ease;
-    }
-</style>
+        .social-btn:hover {
+            border-color: rgba(215, 226, 234, .5);
+            background: rgba(215, 226, 234, .1);
+            transform: translateY(-3px);
+        }
 
-        
+        /* ── Form card ── */
+        .cform {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        .cform-group {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+
+        .cform-label {
+            font-size: .65rem;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            color: rgba(215, 226, 234, .45);
+        }
+
+        .cform-input {
+            width: 100%;
+            background: rgba(215, 226, 234, .04);
+            border: 1px solid rgba(215, 226, 234, .15);
+            border-radius: 14px;
+            padding: .85rem 1.2rem;
+            font-family: 'Kanit', sans-serif;
+            font-size: .95rem;
+            font-weight: 300;
+            color: #D7E2EA;
+            outline: none;
+            transition: border-color .25s, background .25s;
+            resize: none;
+        }
+
+        .cform-input::placeholder {
+            color: rgba(215, 226, 234, .25);
+        }
+
+        .cform-input:focus {
+            border-color: rgba(215, 226, 234, .45);
+            background: rgba(215, 226, 234, .07);
+        }
+
+        .cform-textarea {
+            min-height: 120px;
+        }
+
+        .cform-btn {
+            align-self: flex-start;
+            border: none;
+            cursor: pointer;
+            border-radius: 9999px;
+            padding: .85rem 2.8rem;
+            font-family: 'Kanit', sans-serif;
+            font-size: .85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .18em;
+            color: #fff;
+            background: linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%);
+            box-shadow: 0 4px 4px rgba(181, 1, 167, .25), 4px 4px 12px #7721B1 inset;
+            outline: 2px solid #fff;
+            outline-offset: -3px;
+            transition: transform .2s, opacity .2s;
+        }
+
+        .cform-btn:hover {
+            transform: scale(1.03);
+        }
+
+        .cform-btn:active {
+            opacity: .85;
+            transform: scale(.98);
+        }
+
+        .cform-success {
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 14px;
+            border: 1px solid rgba(215, 226, 234, .2);
+            background: rgba(215, 226, 234, .06);
+            font-size: .9rem;
+            color: #D7E2EA;
+            text-align: center;
+        }
+
+        /* ── Footer ── */
+        .footer-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .75rem;
+            max-width: 72rem;
+            margin: 7rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(215, 226, 234, .1);
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .footer-bar {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-bar span {
+            font-size: .7rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: .2em;
+            color: rgba(215, 226, 234, .5);
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity .7s cubic-bezier(.25, .1, .25, 1), transform .7s cubic-bezier(.25, .1, .25, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile tweaks */
+        @media(max-width:640px) {
+
+            .cert-body,
+            .project-body {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-body-left,
+            .project-body-left {
+                max-width: 100%;
+                padding: 1rem 1.5rem;
+            }
+
+            .cert-visual,
+            .project-visual {
+                height: 220px;
+                border-radius: 0 0 20px 0;
+            }
+
+            .cert-top,
+            .project-top {
+                padding: 1.2rem 1.5rem .8rem;
+                flex-wrap: wrap;
+            }
+
+            #hero nav ul {
+                gap: 1.2rem;
+            }
+        }
     </style>
 </head>
 
-<body class="font-sans">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-opacity-90 backdrop-blur-sm bg-white dark:bg-gray-900 shadow-sm z-50">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <a href="#" class="flex items-center space-x-2">
-                    <span class="text-xl font-bold text-primary dark:text-white">MY<span
-                            class="text-blue-500">PORTFOLIO</span></span>
+<body>
+
+    <!-- ══════════ HERO ══════════ -->
+    <section id="hero">
+        <video id="heroVideo" autoplay muted loop playsinline preload="auto">
+            <source src="intro.mp4" type="video/mp4" />
+        </video>
+        <div class="overlay-lr"></div>
+        <div class="overlay-tb"></div>
+        <div class="content">
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="mailto:tejaskhanavate1@gmail.com" class="email-btn">Email me</a>
+            </nav>
+            <div class="middle">
+                <div class="inner">
+                    <p class="hero-label">Portfolio · 2026</p>
+                    <h1 class="hero-name">Tejas<br>Khanavate</h1>
+                    <p class="hero-sub">Computer Engineering Student · Pune</p>
+                    <p class="hero-sub">Web Developer · UI/UX Designer · GenAI Enthusiast</p>
+                </div>
+            </div>
+            <div class="bottom-bar">
+                <a href="#about" class="scroll-indicator">
+                    <span>Scroll</span>
+                    <div class="scroll-line"></div>
                 </a>
-                <div class="hidden md:flex space-x-8">
-                    <div class="hidden md:flex space-x-8">
-                        <a href="#home"
-                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2">Home</a>
-                        <a href="#about"
-                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2">About</a>
-                        <a href="#projects"
-                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2">Projects</a>
-                        <a href="#certificates"
-                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2">Certificates</a>
-                        <a href="#contact"
-                            class="nav-link text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 px-3 py-2">Contact</a>
-                    </div>
-
-                    <button id="theme-toggle"
-                        class="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
-                        <i id="theme-icon" class="fas fa-moon"></i>
+                <div class="mute-area">
+                    <span class="sound-hint" id="soundHint">Tap for sound</span>
+                    <button class="mute-btn" id="muteBtn" aria-label="Toggle sound">
+                        <svg id="iconMuted" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                            <line x1="23" y1="9" x2="17" y2="15" />
+                            <line x1="17" y1="9" x2="23" y2="15" />
+                        </svg>
+                        <svg id="iconUnmuted" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="display:none">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+                        </svg>
                     </button>
-                    <div class="md:hidden">
-                        <button id="mobile-menu-button"
-                            class="p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <i class="fas fa-bars"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900">
-                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                    <a href="#home"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
-                    <a href="#about"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
-                    <a href="#projects"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700">Projects</a>
-                    <a href="#contact"
-                        class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
-                </div>
-            </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="section flex items-center justify-center">
-        <div id="particles-js"></div>
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <div class="flex flex-col md:flex-row items-center justify-center gap-12">
-                <div class="md:w-1/2">
-                    <img src="tejas111.png"
-                        alt="Professional portrait of smiling individual wearing business casual attire standing against a neutral background"
-                        class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-xl mx-auto border-4 border-blue-500">
-                </div>
-                <div class="md:w-1/2 text-left">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi, I'm <span class="text-blue-500">Tejas
-                            khanavate</span></h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-600 dark:text-gray-300">Computer
-                        Emgineering Student</h2>
-                    <p class="text-lg mb-8 text-gray-700 dark:text-gray-300">
-                        Welcome to my personal portfolio. I create beautiful, functional digital experiences
-                        that make people's lives better.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#projects"
-                            class="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300 font-medium">
-                            View My Work
-                        </a>
-                        <a href="#contact"
-                            class="px-6 py-3 border border-blue-500 text-blue-500 dark:text-blue-400 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900 transition duration-300 font-medium">
-                            Contact Me
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section bg-gray-100 dark:bg-gray-800">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">About <span class="text-blue-500">Me</span></h2>
-            <div class="flex flex-col md:flex-row gap-12">
-                <div class="md:w-1/3 flex justify-center">
-                    <div class="card p-6 rounded-xl shadow-lg">
-                        <div class="text-center">
-                            <img src="tejas11.jpg"
-                                alt="Casual portrait of professional sitting at workspace with laptop and coffee"
-                                class="rounded-lg w-full h-auto mb-4">
-                            <div class="flex justify-center space-x-4 mt-4">
-                                <a href="https://github.com/tejaskhanavte" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 text-xl">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                                <a href="https://www.linkedin.com/in/tejas-khanavate-39907a342" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 text-xl">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="https://x.com/TejasKhanavate" class="text-gray-700 dark:text-gray-300 hover:text-blue-500 text-xl">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                            </div>
+    <!-- ══════════ ABOUT ══════════ -->
+    <section id="about">
+        <div class="about-corner tl"><img
+                src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png"
+                alt="" loading="lazy"></div>
+        <div class="about-corner bl"><img
+                src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png"
+                alt="" loading="lazy"></div>
+        <div class="about-corner tr"><img
+                src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png"
+                alt="" loading="lazy"></div>
+        <div class="about-corner br"><img
+                src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png"
+                alt="" loading="lazy"></div>
+
+        <div class="about-center">
+            <h2 class="hero-heading about-heading reveal">About me</h2>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:3rem;width:100%">
+                <p class="about-text" id="aboutText">
+                    My journey as a web developer started with curiosity about how websites work behind the scenes.
+                    Learning HTML, CSS, and JavaScript opened the door to creating interactive and responsive websites.
+                    Along the way, I explored C, Java, and Python, which strengthened my problem-solving skills. Today,
+                    I focus on combining AI and Web Development to build smart, user-friendly applications with clean
+                    code and modern UI/UX design.
+                </p>
+                <div class="skills-grid reveal">
+                    <div class="skill-row">
+                        <span class="skill-label">Languages</span>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span><span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span><span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span><span class="skill-tag">C</span><span
+                                class="skill-tag">SQL</span>
+                        </div>
+                    </div>
+                    <div class="skill-row">
+                        <span class="skill-label">Skills</span>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Web Development</span><span class="skill-tag">UI/UX Design</span>
+                            <span class="skill-tag">Project Management</span><span class="skill-tag">Responsive
+                                Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-row">
+                        <span class="skill-label">Tools</span>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span>
+                            <span class="skill-tag">Firebase</span><span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Canva</span><span class="skill-tag">Vercel</span>
+                        </div>
+                    </div>
+                    <div class="skill-row">
+                        <span class="skill-label">AI & GenAI</span>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Gemini</span><span class="skill-tag">Claude</span>
+                            <span class="skill-tag">OpenAI</span><span class="skill-tag">Prompt Engineering</span>
                         </div>
                     </div>
                 </div>
-                <div class="md:w-2/3">
-                    <div class="card p-8 rounded-xl shadow-lg">
-                        <h3 class="text-2xl font-semibold mb-4">Personal Details</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                            <div>
-                                <p class="text-gray-500 dark:text-gray-400">Full Name:</p>
-                                <p class="font-medium">Tejas Shivaji Khanavate</p>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 dark:text-gray-400">Email:</p>
-                                <p class="font-medium">tejaskhanavate1@gmail.com</p>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 dark:text-gray-400">Location:</p>
-                                <p class="font-medium">pune</p>
-                            </div>
-                            <div>
-                                <p class="text-gray-500 dark:text-gray-400">Education:</p>
-                                <p class="font-medium">computer engineering</p>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4">My Skills</h3>
-                        <div class="mb-6">
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium">Web Development</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="mb-6">
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium">UI/UX Design</span>
-                                <span>75%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <div class="mb-8">
-                            <div class="flex justify-between mb-1">
-                                <span class="font-medium">Project Management</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-4">About My Journey</h3>
-                        <p class="text-gray-700 dark:text-gray-300 mb-4">
-                            My journey as a web developer started with curiosity. Initially, I was fascinated by how
-                            websites worked behind the scenes – how a simple click could perform so many actions. This
-                            curiosity pushed me to learn the basics of HTML, CSS, and JavaScript, which opened the door
-                            to the world of web development.
-
-                            As I explored further, I realized web development is not just about writing code – it’s
-                            about creating experiences. Designing responsive layouts, adding interactive features, and
-                            optimizing performance gave me the confidence to build real-world projects.
-
-                            Along the way, I also gained knowledge of programming languages like C, Java, and Python,
-                            which helped me understand problem-solving and logic building. Combining this with web
-                            technologies allowed me to approach development from both the design and engineering
-                            perspective.
-
-
-                        </p>
-                        <p class="text-gray-700 dark:text-gray-300">
-                            Currently, I am passionate about combining AI and Web Development to build smarter,
-                            user-friendly applications. My focus is on writing clean, efficient code while paying
-                            attention to UI/UX design to ensure every project delivers value.
-                        </p>
-                    </div>
-                </div>
+                <div class="reveal"><a href="#contact" class="contact-btn">Contact Me</a></div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-4">My <span class="text-blue-500">Projects</span></h2>
-            <p class="text-xl text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-                Here are some of my recent work. Each project comes with its own challenges and learnings.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="project-card card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
-                   <a href="https://toolwebsite455.blogspot.com/"> <img src="tejas13.jpg"
-                        alt="Modern responsive website dashboard showing analytics charts and metrics"
-                        class="w-full h-48 object-cover"></a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">all in one pdf generator</h3>
-                        <p class="text-gray-700 dark:text-gray-300 mb-4">
-                            Generate PDF file from text online. Supports rich text format and background color options.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">HTML</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">CSS</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JAVASCRIPT</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://toolwebsite455.blogspot.com/"
-                                class="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                            <a href="#" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-       <!-- Project 2 -->
-                <div class="project-card card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
-                   <a href=" https://tejaskhanavte.github.io/Bazaroo/"> <img src="e.png"
-                        alt="Mobile application screens showing social media interface with user profiles"
-                        class="w-full h-48 object-cover"></a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2"> e-commerce website </h3>
-                        <p class="text-gray-700 dark:text-gray-300 mb-4">
-                            A fully responsive e-commerce website with product listings, shopping cart, and checkout
-                            functionality.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">HTML</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">CSS</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JAVASCRIPT</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://tejaskhanavte.github.io/Bazaroo/" target="_blank"
-                                class="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                            <a href="https://github.com/TejasKhanavte/Bazaroo.git" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="project-card card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
-                   <a href="https://tejaskhanavte.github.io/my-projects/"> <img src="ttttt.png"
-                        alt="Mobile application screens showing social media interface with user profiles"
-                        class="w-full h-48 object-cover"></a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Bisuness Of GDG Group</h3>
-                        <p class="text-gray-700 dark:text-gray-300 mb-4">
-                            Electrical releted services provided by GDG Group
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">HTML</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">CSS</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JAVASCRIPT</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://tejaskhanavte.github.io/my-projects/" target="_blank"
-                                class="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                            <a href="https://github.com/TejasKhanavte/my-projects.git" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <!-- ══════════ CERTIFICATES ══════════ -->
+    <section id="certificates">
+        <h2 class="certificates-heading reveal">Certificates</h2>
+        <div style="max-width:90rem;margin:0 auto;position:relative;">
 
-               <!-- Project 4 -->
-                <div class="project-card card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
-                   <a href=" https://tejaskhanavte.github.io/location-tracking/"> <img src="location.png"
-                        alt="Mobile application screens showing social media interface with user profiles"
-                        class="w-full h-48 object-cover"></a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Location tracking Website</h3>
-                        <p class="text-gray-700 dark:text-gray-300 mb-4">
-                            Track The Location of any one by just entering there mobile number
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">HTML</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">CSS</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JAVASCRIPT</span>
+            <!-- 01 Data Thon -->
+            <div class="cert-card" style="top:80px;">
+                <div class="cert-inner" id="cert0">
+                    <div class="cert-top">
+                        <div class="cert-meta">
+                            <div class="cert-num">01</div>
+                            <div class="cert-info">
+                                <span class="cert-issuer">Competition · College</span>
+                                <h3 class="cert-name">Data Thon Certificate</h3>
+                                <span class="cert-date">Issued June 2025</span>
+                            </div>
                         </div>
-                        <div class="flex space-x-3">
-                            <a href="https://tejaskhanavte.github.io/location-tracking/" target="_blank"
-                                class="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                            <a href="https://github.com/TejasKhanavte/location-tracking.git" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                        </div>
+                        <a href="data.png" target="_blank" class="verify-btn">View ↗</a>
                     </div>
-                </div>
-                  <!-- Project 5 -->
-                <div class="project-card card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
-                   <a href=" https://tejaskhanavte.github.io/budget-tracker/"> <img src="account.png"
-                        alt="Mobile application screens showing social media interface with user profiles"
-                        class="w-full h-48 object-cover"></a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Budget tracker Website</h3>
-                        <p class="text-gray-700 dark:text-gray-300 mb-4">
-                            track your daily expences and incom with this website
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">HTML</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">CSS</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JAVASCRIPT</span>
+                    <div class="cert-body">
+                        <div class="cert-body-left">
+                            <p class="cert-desc">Participated in Data Structure & Algorithm competition demonstrating
+                                strong problem-solving under competitive conditions.</p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">Data Structures</span>
+                                <span class="cert-skill-tag">Algorithms</span>
+                                <span class="cert-skill-tag">Problem Solving</span>
+                            </div>
                         </div>
-                        <div class="flex space-x-3">
-                            <a href="https://tejaskhanavte.github.io/budget-tracker/" target="_blank"
-                                class="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                            <a href="https://github.com/TejasKhanavte/budget-tracker.git" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                                <i class="fab fa-github"></i> Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 6 -->
-                <div class="project-card card rounded-xl overflow-hidden shadow-lg hover:shadow-xl">
-                    <a href="https://tejaskhanavte.github.io/hackathon/"><img src="tejas1.png"
-                        alt="E-commerce website product page showing various items with prices and ratings"
-                        class="w-full h-48 object-cover"></a>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Online Examination & certificate Systam</h3>
-                        <p class="text-gray-700 dark:text-gray-300 mb-4">
-                            a online examination systam that generate certificate after Completion of exam
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">HTML</span>
-                            
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">CSS</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JAVASCRIPT</span>
-                            <span
-                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Firebase</span>
-                        </div>
-                        <div class="flex space-x-3">
-                            <a href="https://tejaskhanavte.github.io/hackathon/"
-                                class="text-blue-500 hover:text-blue-700 dark:hover:text-blue-400">
-                                <i class="fas fa-external-link-alt"></i> Live
-                            </a>
-                            <a href="https://github.com/TejasKhanavte/hackathon.git" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-                                <i class="fab fa-github"></i> Code
-                            </a>
+                        <div class="cert-visual">
+                            <img src="data.png" alt="Data Thon Certificate" />
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- 02 Hackathon -->
+            <div class="cert-card" style="top:104px;">
+                <div class="cert-inner" id="cert1">
+                    <div class="cert-top">
+                        <div class="cert-meta">
+                            <div class="cert-num">02</div>
+                            <div class="cert-info">
+                                <span class="cert-issuer">Smart India Hackathon</span>
+                                <h3 class="cert-name">Hackathon Certificate</h3>
+                                <span class="cert-date">Issued March 2025</span>
+                            </div>
+                        </div>
+                        <a href="hack.jpg" target="_blank" class="verify-btn">View ↗</a>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-body-left">
+                            <p class="cert-desc">Participated in Smart India Hackathon, building innovative solutions to
+                                real-world problems in a time-constrained environment.</p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">Innovation</span>
+                                <span class="cert-skill-tag">Rapid Prototyping</span>
+                                <span class="cert-skill-tag">Teamwork</span>
+                            </div>
+                        </div>
+                        <div class="cert-visual">
+                            <img src="hack.jpg" alt="Hackathon Certificate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 03 Design Thinking -->
+            <div class="cert-card" style="top:128px;">
+                <div class="cert-inner" id="cert2">
+                    <div class="cert-top">
+                        <div class="cert-meta">
+                            <div class="cert-num">03</div>
+                            <div class="cert-info">
+                                <span class="cert-issuer">Competition · College</span>
+                                <h3 class="cert-name">Design Thinking — 3rd Rank</h3>
+                                <span class="cert-date">Issued December 2024</span>
+                            </div>
+                        </div>
+                        <a href="tejas1234.jpg" target="_blank" class="verify-btn">View ↗</a>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-body-left">
+                            <p class="cert-desc">Achieved 3rd Rank in Design Thinking Competition, showcasing creativity
+                                and user-centered problem-solving methodology.</p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">Design Thinking</span>
+                                <span class="cert-skill-tag">UI/UX</span>
+                                <span class="cert-skill-tag">Creativity</span>
+                            </div>
+                        </div>
+                        <div class="cert-visual">
+                            <img src="tejas1234.jpg" alt="Design Thinking Certificate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 04 Cybersecurity Finance -->
+            <div class="cert-card" style="top:152px;">
+                <div class="cert-inner" id="cert3">
+                    <div class="cert-top">
+                        <div class="cert-meta">
+                            <div class="cert-num">04</div>
+                            <div class="cert-info">
+                                <span class="cert-issuer">Online Course</span>
+                                <h3 class="cert-name">Cybersecurity in Finance</h3>
+                                <span class="cert-date">Issued November 2025</span>
+                            </div>
+                        </div>
+                        <a href="cyber.pdf" target="_blank" class="verify-btn">View ↗</a>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-body-left">
+                            <p class="cert-desc">Completed Cybersecurity in Finance online course covering security
+                                principles and protective measures in the financial sector.</p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">Cybersecurity</span>
+                                <span class="cert-skill-tag">Finance Security</span>
+                                <span class="cert-skill-tag">Risk Management</span>
+                            </div>
+                        </div>
+                        <div class="cert-visual">
+                            <img src="cyber.png" alt="Cybersecurity Certificate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 05 Cisco -->
+            <div class="cert-card" style="top:176px;">
+                <div class="cert-inner" id="cert4">
+                    <div class="cert-top">
+                        <div class="cert-meta">
+                            <div class="cert-num">05</div>
+                            <div class="cert-info">
+                                <span class="cert-issuer">Cisco Networking Academy</span>
+                                <h3 class="cert-name">Networking Academy Certificate</h3>
+                                <span class="cert-date">Issued 14 Feb 2026</span>
+                            </div>
+                        </div>
+                        <a href="tejas44.jpg" target="_blank" class="verify-btn">View ↗</a>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-body-left">
+                            <p class="cert-desc">Cisco Networking Academy program covering core networking concepts,
+                                security fundamentals, and practical network skills.</p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">Networking</span>
+                                <span class="cert-skill-tag">Cisco</span>
+                                <span class="cert-skill-tag">Network Security</span>
+                            </div>
+                        </div>
+                        <div class="cert-visual">
+                            <img src="tejas44.jpg" alt="Cisco Certificate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 06 Deloitte -->
+            <div class="cert-card" style="top:200px;">
+                <div class="cert-inner" id="cert5">
+                    <div class="cert-top">
+                        <div class="cert-meta">
+                            <div class="cert-num">06</div>
+                            <div class="cert-info">
+                                <span class="cert-issuer">Deloitte · Job Simulation</span>
+                                <h3 class="cert-name">Cyber Job Simulation</h3>
+                                <span class="cert-date">Issued January 2026</span>
+                            </div>
+                        </div>
+                        <a href="tejas55.jpg" target="_blank" class="verify-btn">View ↗</a>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-body-left">
+                            <p class="cert-desc">Deloitte Cyber Job Simulation — hands-on simulation of real
+                                cybersecurity tasks in professional consulting environments.</p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">Cybersecurity</span>
+                                <span class="cert-skill-tag">Incident Response</span>
+                                <span class="cert-skill-tag">Consulting</span>
+                            </div>
+                        </div>
+                        <div class="cert-visual">
+                            <img src="tejas55.jpg" alt="Deloitte Certificate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 07 Tech Mahindra -->
+            <div class="cert-card" style="top:224px;">
+                <div class="cert-inner" id="cert6">
+                    <div class="cert-top">
+                        <div class="cert-meta">
+                            <div class="cert-num">07</div>
+                            <div class="cert-info">
+                                <span class="cert-issuer">Tech Mahindra · Skill India Digital Hub</span>
+                                <h3 class="cert-name">Cybersecurity Certificate</h3>
+                                <span class="cert-date">Issued November 2025</span>
+                            </div>
+                        </div>
+                        <a href="tejas66.jpg" target="_blank" class="verify-btn">View ↗</a>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-body-left">
+                            <p class="cert-desc">Cybersecurity course by Tech Mahindra Foundation via Skill India
+                                Digital Hub covering essential security and digital safety practices.</p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">Cybersecurity</span>
+                                <span class="cert-skill-tag">Digital Safety</span>
+                                <span class="cert-skill-tag">Skill India</span>
+                            </div>
+                        </div>
+                        <div class="cert-visual">
+                            <img src="tejas66.jpg" alt="Tech Mahindra Certificate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 08 SQL Arena -->
+            <div class="cert-card" style="top:248px;">
+                <div class="cert-inner" id="cert7">
+                    <div class="cert-top">
+                        <div class="cert-meta">
+                            <div class="cert-num">08</div>
+                            <div class="cert-info">
+                                <span class="cert-issuer">Competition · College</span>
+                                <h3 class="cert-name">SQL Arena — Query Battle</h3>
+                                <span class="cert-date">Issued March 2026</span>
+                            </div>
+                        </div>
+                        <a href="tejas1122334455.pdf" target="_blank" class="verify-btn">View ↗</a>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-body-left">
+                            <p class="cert-desc">High-stakes SQL query competition demonstrating proficiency in database
+                                management and complex query optimization.</p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">SQL</span>
+                                <span class="cert-skill-tag">Database Management</span>
+                                <span class="cert-skill-tag">Query Optimization</span>
+                            </div>
+                        </div>
+                        <div class="cert-visual">
+                            <img src="TEJAS9421.png" alt="SQL Arena Certificate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 09 Gemini AI -->
+            <div class="cert-card" style="top:272px;">
+                <div class="cert-inner" id="cert8">
+                    <div class="cert-top">
+                        <div class="cert-meta">
+                            <div class="cert-num">09</div>
+                            <div class="cert-info">
+                                <span class="cert-issuer">Google Student Ambassador Program</span>
+                                <h3 class="cert-name">Gemini AI Quiz Competition</h3>
+                                <span class="cert-date">Issued January 2025</span>
+                            </div>
+                        </div>
+                        <a href="Tejas Khanavate.pdf" target="_blank" class="verify-btn">View ↗</a>
+                    </div>
+                    <div class="cert-body">
+                        <div class="cert-body-left">
+                            <p class="cert-desc">Recognized in Gemini AI Quiz under the Google Student Ambassador
+                                Program, demonstrating knowledge of Google AI and generative AI concepts.</p>
+                            <div class="cert-skills">
+                                <span class="cert-skill-tag">Gemini AI</span>
+                                <span class="cert-skill-tag">Generative AI</span>
+                                <span class="cert-skill-tag">Google</span>
+                            </div>
+                        </div>
+                        <div class="cert-visual">
+                            <img src="khanavate.jpg" alt="Gemini AI Certificate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-<!--certificates-->
+    </section>
 
-       <section id="certificates" class="section">
-            <div class="container">
-                <h2 class="section-title">Certificates & Achievements</h2>
-                <p class="section-description">
-                    Professional certifications and achievements that demonstrate my expertise and commitment to
-                    continuous learning.
-                </p>
+    <!-- ══════════ PROJECTS ══════════ -->
+    <section id="projects">
+        <h2 class="hero-heading projects-heading reveal">Projects</h2>
+        <div style="max-width:90rem;margin:0 auto;position:relative;">
 
-                <div class="certificates-grid">
-                    <!-- Certificate 1 -->
-                    <div class="certificate-card">
-                        <div class="certificate-image">
-                           <a href="data.png"> <img src="data.png"
-                                alt="Web Development Professional Certificate with gold seal and elegant blue background design" /></a>
-                        </div>
-                        <div class="certificate-content">
-                            <h3>Data Thon Certificate</h3>
-                            <p>participate data structure and algorithm compitation</p>
-                            <div class="certificate-meta">
-                                <span class="issue-date">Issued: June 2025</span>
-                                <span class="status-badge">Active</span>
+            <!-- 01 PDF Generator -->
+            <div class="project-card" style="top:80px;">
+                <div class="project-inner" id="card0">
+                    <div class="project-top">
+                        <div class="project-meta">
+                            <div class="project-num">01</div>
+                            <div class="project-info">
+                                <span class="project-cat">Web Tool · HTML / CSS / JS</span>
+                                <h3 class="project-name">All in One PDF Generator</h3>
                             </div>
                         </div>
+                        <a href="https://toolwebsite455.blogspot.com/" target="_blank" class="live-btn">Live ↗</a>
                     </div>
-
-                    <!-- Certificate 2 -->
-                    <div class="certificate-card">
-                        <div class="certificate-image">
-                           <a href="hack.jpg"> <img src="hack.jpg"
-                                alt="React JS Master Certification with modern purple gradient design and official branding" /></a>
-                        </div>
-                        <div class="certificate-content">
-                            <h3>Hackathon Certificate</h3>
-                            <p>participate Smart India Hackathon</p>
-                            <div class="certificate-meta">
-                                <span class="issue-date">Issued: March 2025</span>
-                                <span class="status-badge">Active</span>
+                    <div class="project-body">
+                        <div class="project-body-left">
+                            <p class="project-desc">Generate PDF from text online with rich text format and background
+                                color options. Quick and handy document creation tool.</p>
+                            <div class="project-tags">
+                                <span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span
+                                    class="proj-tag">JavaScript</span>
                             </div>
                         </div>
-                    </div>
-
-                    
-                    <!-- Certificate 3 -->
-                      
-                     <div class="certificate-card">
-                        <div class="certificate-image">
-                           <a href="tejas1234.jpg"> <img src="tejas1234.jpg"
-                                alt="React JS Master Certification with modern purple gradient design and official branding" /></a>
-                        </div>
-                        <div class="certificate-content">
-                            <h3>Design Thinking Certificate</h3>
-                            <p>Achive 3rd Rank in Design Thinking Compitation </p>
-                            <div class="certificate-meta">
-                                <span class="issue-date">Issued: December 2024</span>
-                                <span class="status-badge">Active</span>
-                            </div>
-                        </div>
-                    </div>
-                     <!-- Certificate 4 -->
-                      
-                     <div class="certificate-card">
-                        <div class="certificate-image">
-                           <a href="cyber.pdf"> <img src="cyber.png"
-                                alt="React JS Master Certification with modern purple gradient design and official branding" /></a>
-                        </div>
-                        <div class="certificate-content">
-                            <h3>Cyber Security Certificate</h3>
-                            <p> Complete the Cybersecurity in Finance online course</p>
-                            <div class="certificate-meta">
-                                <span class="issue-date">Issued: november 2025</span>
-                                <span class="status-badge">Active</span>
-                            </div>
-                        </div>
-                    </div> 
-                    <!-- Certificate 5 -->
-                      
-                     <div class="certificate-card">
-                        <div class="certificate-image">
-                           <a href="tejas44.jpg"> <img src="tejas44.jpg"
-                                alt="React JS Master Certification with modern purple gradient design and official branding" /></a>
-                        </div>
-                        <div class="certificate-content">
-                            <h3>Cyber Security Certificate</h3>
-                            <p> offered by Networking Academy through the Cisco Networking Academy program.</p>
-                            <div class="certificate-meta">
-                                <span class="issue-date">Issued: 14 FEB 2026</span>
-                                <span class="status-badge">Active</span>
-                            </div>
-                        </div>
-                    </div>
-                   <!-- Certificate 6 -->
-                      
-                     <div class="certificate-card">
-                        <div class="certificate-image">
-                           <a href="tejas55.jpg"> <img src="tejas55.jpg"
-                                alt="React JS Master Certification with modern purple gradient design and official branding" /></a>
-                        </div>
-                        <div class="certificate-content">
-                            <h3> Cyber Job Simulation Certificate</h3>
-                            <p>Deloitte Certificate of Cyber Job Simulation </p>
-                            <div class="certificate-meta">
-                                <span class="issue-date">Issued:JAN 2026</span>
-                                <span class="status-badge">Active</span>
-                            </div>
-                        </div>
-                    </div>
-                      <!-- Certificate 7 -->
-                      
-                     <div class="certificate-card">
-                        <div class="certificate-image">
-                           <a href="tejas66.jpg"> <img src="tejas66.jpg"
-                                alt="React JS Master Certification with modern purple gradient design and official branding" /></a>
-                        </div>
-                        <div class="certificate-content">
-                            <h3> Cybersecurity Certificate</h3>
-                            <p>a course offered by Tech Mahindra foundation through the Skill India Digital Hub.</p>
-                            <div class="certificate-meta">
-                                <span class="issue-date">Issued:NOV 2025</span>
-                                <span class="status-badge">Active</span>
-                            </div>
-                        </div>
-                    </div>
-                   <!-- Certificate 8 -->
-                    <div class="certificate-card">
-                        <div class="certificate-image">
-                           <a href="tejas1122334455.pdf"> <img src="TEJAS9421.png"
-                                alt="React JS Master Certification with modern purple gradient design and official branding" /></a>
-                        </div>
-                        <div class="certificate-content">
-                            <h3> SQL ARENA – The Ultimate Query Battle </h3>
-                            <p>Participated in a high-stakes SQL query competition, demonstrating proficiency in database management and complex query optimization.</p>
-                            <div class="certificate-meta">
-                                <span class="issue-date">Issued:MAR 2026</span>
-                                <span class="status-badge">Active</span>
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <!-- Certificate 9 -->
-                    <div class="certificate-card">
-                        <div class="certificate-image">
-                         <a href="Tejas Khanavate.pdf" > <img src="khanavate.jpg"
-                                alt="UI/UX Design Excellence Certificate with clean minimalist design and geometric patterns" /></a> 
-                        </div>
-                        <div class="certificate-content">
-                            <h3>Gemini AI Quize  compitation</h3>
-                            <p>Google student Ambasitor Program</p>
-                            <div class="certificate-meta">
-                                <span class="issue-date">Issued: January 2025</span>
-                                <span class="status-badge">Active</span>
-                            </div>
+                        <div class="project-visual">
+                            <img src="tejas13.jpg" alt="PDF Generator" />
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section bg-gray-100 dark:bg-gray-800">
-            <div class="max-w-6xl mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-4">Get In <span class="text-blue-500">Touch</span></h2>
-                <p class="text-xl text-center text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-                    Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
-                </p>
-                <div class="flex flex-col md:flex-row gap-12">
-                    <div class="md:w-1/2">
-                        <div class="card p-8 rounded-xl shadow-lg h-full">
-                            <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
-                            <div class="space-y-4">
-                                <div class="flex items-start space-x-4">
-                                    <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full">
-                                        <i class="fas fa-envelope text-blue-500 dark:text-blue-400"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-medium">Email</h4>
-                                        <p class="text-gray-600 dark:text-gray-400">tejaskhanavate1@gmail.com</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start space-x-4">
-                                    <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full">
-                                        <i class="fas fa-phone-alt text-blue-500 dark:text-blue-400"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-medium">Phone</h4>
-                                        <p class="text-gray-600 dark:text-gray-400">+91 7620657696</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start space-x-4">
-                                    <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full">
-                                        <i class="fas fa-map-marker-alt text-blue-500 dark:text-blue-400"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-medium">Location</h4>
-                                        <p class="text-gray-600 dark:text-gray-400">pune</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <h3 class="text-2xl font-semibold mt-8 mb-4">Follow Me</h3>
-                            <div class="flex space-x-4">
-                                <a href="https://github.com/tejaskhanavte" target="_blank">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub"
-                                        style="width:30px; height:30px;">
-                                </a>
-
-                                <a href="https://www.linkedin.com/in/tejas-khanavate-39907a342" target="_blank">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"
-                                        style="width:30px; height:30px;">
-                                </a>
-                                <a href="https://x.com/TejasKhanavate" target="_blank">
-                                    <img src="logot.png" alt="Twitter"
-                                        style="width:30px; height:30px;">
-                                </a>
-                                <a href="https://www.instagram.com/tejas_khanavate_96k/" target="_blank">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"
-                                        style="width:30px; height:30px;">
-                                </a>
+            <!-- 02 Bazaroo -->
+            <div class="project-card" style="top:104px;">
+                <div class="project-inner" id="card1">
+                    <div class="project-top">
+                        <div class="project-meta">
+                            <div class="project-num">02</div>
+                            <div class="project-info">
+                                <span class="project-cat">E-Commerce · HTML / CSS / JS</span>
+                                <h3 class="project-name">Bazaroo — E-Commerce Website</h3>
                             </div>
                         </div>
+                        <a href="https://tejaskhanavte.github.io/Bazaroo/" target="_blank" class="live-btn">Live ↗</a>
                     </div>
-                    <div class="md:w-1/2">
-                        <div class="card p-8 rounded-xl shadow-lg h-full">
-                            <h3 class="text-2xl font-semibold mb-6">Send Me a Message</h3>
-
-                            <!-- Contact Form -->
-                            <form id="contact-form" action="https://formspree.io/f/mkgvbnbd" method="POST">
-                                <div class="mb-4">
-                                    <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Your
-                                        Name</label>
-                                    <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg 
-                 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white" />
-                                </div>
-
-                                <div class="mb-4">
-                                    <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Your
-                                        Email</label>
-                                    <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg 
-                 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white" />
-                                </div>
-
-                                <div class="mb-4">
-                                    <label for="subject"
-                                        class="block text-gray-700 dark:text-gray-300 mb-2">Subject</label>
-                                    <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg 
-                 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white" />
-                                </div>
-
-                                <div class="mb-6">
-                                    <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Your
-                                        Message</label>
-                                    <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg 
-                 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white"></textarea>
-                                </div>
-
-                                <button type="submit"
-                                    class="w-full bg-blue-500 text-white py-3 px-4 rounded-lg hover:bg-blue-600 transition duration-300 font-medium">
-                                    Send Message
-                                </button>
-                            </form>
-
-                            <!-- Thank You Message -->
-                            <p id="thank-you-message" class="hidden mt-4 text-green-600 font-semibold">
-                                ✅ Thank you for your message! I will get back to you soon.
-                            </p>
+                    <div class="project-body">
+                        <div class="project-body-left">
+                            <p class="project-desc">Fully responsive e-commerce website with product listings, shopping
+                                cart, and checkout functionality.</p>
+                            <div class="project-tags">
+                                <span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span
+                                    class="proj-tag">JavaScript</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <script>
-                        const form = document.getElementById('contact-form');
-                        const thankYouMessage = document.getElementById('thank-you-message');
-
-                        form.addEventListener('submit', function (e) {
-                            e.preventDefault();
-
-                            const formData = new FormData(form);
-
-                            fetch(form.action, {
-                                method: form.method,
-                                body: formData,
-                                headers: {
-                                    'Accept': 'application/json'
-                                }
-                            }).then(response => {
-                                if (response.ok) {
-                                    form.reset();
-                                    thankYouMessage.classList.remove('hidden');
-                                } else {
-                                    response.json().then(data => {
-                                        if (Object.hasOwn(data, 'errors')) {
-                                            alert(data["errors"].map(error => error["message"]).join(", "));
-                                        } else {
-                                            alert('Oops! There was a problem submitting your form');
-                                        }
-                                    });
-                                }
-                            }).catch(() => {
-                                alert('Oops! There was a problem submitting your form');
-                            });
-                        });
-                    </script>
-
-        </section>
-
-        <!-- Footer -->
-        <footer class="bg-white dark:bg-gray-900 py-8">
-            <div class="max-w-6xl mx-auto px-4">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="text-center md:text-left mb-4 md:mb-0">
-                        <a href="#" class="text-xl font-bold text-gray-800 dark:text-white">MY<span
-                                class="text-blue-500">PORTFOLIO</span></a>
-                        <p class="text-gray-600 dark:text-gray-400 mt-2">© 2025 All Rights Reserved</p>
-                    </div>
-                    <div class="flex space-x-6">
-                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-500">Privacy Policy</a>
-                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-blue-500">Terms of Service</a>
-                        <a href="#home" class="text-gray-600 dark:text-gray-400 hover:text-blue-500">
-                            <i class="fas fa-arrow-up"></i>
-                        </a>
+                        <div class="project-visual">
+                            <img src="e.png" alt="Bazaroo E-Commerce" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
 
-        <script>
-            // Dark mode toggle
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeIcon = document.getElementById('theme-icon');
-            const html = document.documentElement;
+            <!-- 03 GDG Group -->
+            <div class="project-card" style="top:128px;">
+                <div class="project-inner" id="card2">
+                    <div class="project-top">
+                        <div class="project-meta">
+                            <div class="project-num">03</div>
+                            <div class="project-info">
+                                <span class="project-cat">Business Website · HTML / CSS / JS</span>
+                                <h3 class="project-name">GDG Group — Business Website</h3>
+                            </div>
+                        </div>
+                        <a href="https://tejaskhanavte.github.io/my-projects/" target="_blank" class="live-btn">Live
+                            ↗</a>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-body-left">
+                            <p class="project-desc">Professional business website for GDG Group showcasing
+                                electrical-related services with a clean, modern responsive layout.</p>
+                            <div class="project-tags">
+                                <span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span
+                                    class="proj-tag">JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="project-visual">
+                            <img src="ttttt.png" alt="GDG Group Website" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            // Check for saved user preference
-            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                html.classList.add('dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                html.classList.remove('dark');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
+            <!-- 04 Location Tracking -->
+            <div class="project-card" style="top:152px;">
+                <div class="project-inner" id="card3">
+                    <div class="project-top">
+                        <div class="project-meta">
+                            <div class="project-num">04</div>
+                            <div class="project-info">
+                                <span class="project-cat">Utility App · HTML / CSS / JS</span>
+                                <h3 class="project-name">Location Tracking Website</h3>
+                            </div>
+                        </div>
+                        <a href="https://tejaskhanavte.github.io/location-tracking/" target="_blank"
+                            class="live-btn">Live ↗</a>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-body-left">
+                            <p class="project-desc">Track approximate location by entering a mobile number. Demonstrates
+                                geolocation and API integration concepts.</p>
+                            <div class="project-tags">
+                                <span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span
+                                    class="proj-tag">JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="project-visual">
+                            <img src="location.png" alt="Location Tracking" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            // Toggle theme
-            themeToggle.addEventListener('click', () => {
-                html.classList.toggle('dark');
-                if (html.classList.contains('dark')) {
-                    localStorage.setItem('theme', 'dark');
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
+            <!-- 05 Budget Tracker -->
+            <div class="project-card" style="top:176px;">
+                <div class="project-inner" id="card4">
+                    <div class="project-top">
+                        <div class="project-meta">
+                            <div class="project-num">05</div>
+                            <div class="project-info">
+                                <span class="project-cat">Finance App · HTML / CSS / JS</span>
+                                <h3 class="project-name">Budget Tracker Website</h3>
+                            </div>
+                        </div>
+                        <a href="https://tejaskhanavte.github.io/budget-tracker/" target="_blank" class="live-btn">Live
+                            ↗</a>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-body-left">
+                            <p class="project-desc">Track daily expenses and income with an intuitive interface. Helps
+                                manage finances and visualize spending patterns.</p>
+                            <div class="project-tags">
+                                <span class="proj-tag">HTML</span><span class="proj-tag">CSS</span><span
+                                    class="proj-tag">JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="project-visual">
+                            <img src="account.png" alt="Budget Tracker" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 06 Exam System -->
+            <div class="project-card" style="top:200px;">
+                <div class="project-inner" id="card5">
+                    <div class="project-top">
+                        <div class="project-meta">
+                            <div class="project-num">06</div>
+                            <div class="project-info">
+                                <span class="project-cat">EdTech · HTML / CSS / JS / Firebase</span>
+                                <h3 class="project-name">Online Exam & Certificate System</h3>
+                            </div>
+                        </div>
+                        <a href="https://tejaskhanavte.github.io/hackathon/" target="_blank" class="live-btn">Live ↗</a>
+                    </div>
+                    <div class="project-body">
+                        <div class="project-body-left">
+                            <p class="project-desc">Online examination system that auto-generates a certificate on exam
+                                completion. Powered by Firebase for real-time data.</p>
+                            <div class="project-tags">
+                                <span class="proj-tag">HTML</span><span class="proj-tag">CSS</span>
+                                <span class="proj-tag">JavaScript</span><span class="proj-tag">Firebase</span>
+                            </div>
+                        </div>
+                        <div class="project-visual">
+                            <img src="tejas1.png" alt="Exam Certificate System" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ══════════ CONTACT ══════════ -->
+    <section id="contact">
+        <h2 class="hero-heading contact-heading reveal">Get in touch</h2>
+        <p class="contact-sub reveal">Have a project in mind or want to discuss potential opportunities?</p>
+
+        <div class="contact-grid reveal">
+
+            <!-- LEFT: Info + Social -->
+            <div class="contact-info-card">
+                <h3 class="cinfo-title">Contact Information</h3>
+
+                <div class="cinfo-list">
+                    <div class="cinfo-item">
+                        <div class="cinfo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="cinfo-label">Email</p>
+                            <a href="mailto:tejaskhanavate1@gmail.com" class="cinfo-value">tejaskhanavate1@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="cinfo-item">
+                        <div class="cinfo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.59 3.38 2 2 0 0 1 3.56 1.21h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 5.95 5.95l1.59-1.35a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="cinfo-label">Phone</p>
+                            <a href="tel:+917620657696" class="cinfo-value">+91 7620657696</a>
+                        </div>
+                    </div>
+
+                    <div class="cinfo-item">
+                        <div class="cinfo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="cinfo-label">Location</p>
+                            <p class="cinfo-value">Pune, Maharashtra</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cinfo-divider"></div>
+
+                <h3 class="cinfo-title">Follow Me</h3>
+                <div class="social-row">
+                    <a href="https://github.com/tejaskhanavte" target="_blank" class="social-btn" title="GitHub">
+                        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" width="22"
+                            height="22" style="filter:invert(1)">
+                    </a>
+                    <a href="https://www.linkedin.com/in/tejas-khanavate-39907a342" target="_blank" class="social-btn"
+                        title="LinkedIn">
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="22"
+                            height="22">
+                    </a>
+                    <a href="https://x.com/TejasKhanavate" target="_blank" class="social-btn" title="Twitter / X">
+                        <img src="logot.png" alt="Twitter" width="22" height="22" style="filter:invert(1)">
+                    </a>
+                    <a href="https://www.instagram.com/tejas_khanavate_96k/" target="_blank" class="social-btn"
+                        title="Instagram">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="22"
+                            height="22">
+                    </a>
+                </div>
+            </div>
+
+            <!-- RIGHT: Form -->
+            <div class="contact-form-card">
+                <h3 class="cinfo-title">Send Me a Message</h3>
+
+                <form id="contact-form" action="https://formspree.io/f/mkgvbnbd" method="POST" class="cform">
+                    <div class="cform-group">
+                        <label for="name" class="cform-label">Your Name</label>
+                        <input type="text" id="name" name="name" required class="cform-input"
+                            placeholder="Tejas Khanavate" />
+                    </div>
+                    <div class="cform-group">
+                        <label for="email" class="cform-label">Your Email</label>
+                        <input type="email" id="email" name="email" required class="cform-input"
+                            placeholder="you@example.com" />
+                    </div>
+                    <div class="cform-group">
+                        <label for="subject" class="cform-label">Subject</label>
+                        <input type="text" id="subject" name="subject" required class="cform-input"
+                            placeholder="Project Inquiry" />
+                    </div>
+                    <div class="cform-group">
+                        <label for="message" class="cform-label">Your Message</label>
+                        <textarea id="message" name="message" rows="4" required class="cform-input cform-textarea"
+                            placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="cform-btn">Send Message</button>
+                </form>
+
+                <p id="thank-you-message" class="cform-success" style="display:none;">
+                    ✅ Thank you for your message! I will get back to you soon.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="footer-bar reveal">
+            <span>© 2026 Tejas Shivaji Khanavate</span>
+            <span>Designed & Built with ❤️ · Pune, Maharashtra</span>
+        </div>
+    </section>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        const thankYouMessage = document.getElementById('thank-you-message');
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    form.reset();
+                    form.style.display = 'none';
+                    thankYouMessage.style.display = 'block';
                 } else {
-                    localStorage.setItem('theme', 'light');
-                    themeIcon.classList.remove('fa-sun');
-                    themeIcon.classList.add('fa-moon');
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(e => e["message"]).join(", "));
+                        } else {
+                            alert('Oops! There was a problem submitting your form');
+                        }
+                    });
                 }
+            }).catch(() => { alert('Oops! There was a problem submitting your form'); });
+        });
+    </script>
+
+    <script>
+        /* ── Mute toggle ── */
+        const video = document.getElementById('heroVideo');
+        const muteBtn = document.getElementById('muteBtn');
+        const soundHint = document.getElementById('soundHint');
+        const iconMuted = document.getElementById('iconMuted');
+        const iconUnmuted = document.getElementById('iconUnmuted');
+
+        setTimeout(() => { if (soundHint) soundHint.style.display = 'none'; }, 5000);
+        muteBtn.addEventListener('click', () => {
+            video.muted = !video.muted;
+            iconMuted.style.display = video.muted ? '' : 'none';
+            iconUnmuted.style.display = video.muted ? 'none' : '';
+            if (soundHint) soundHint.style.display = 'none';
+        });
+        const muteObs = new IntersectionObserver(([e]) => {
+            if (!e.isIntersecting && !video.muted) { video.muted = true; iconMuted.style.display = ''; iconUnmuted.style.display = 'none'; }
+        }, { threshold: 0, rootMargin: '-50% 0px 0px 0px' });
+        muteObs.observe(document.getElementById('hero'));
+
+        /* ── First scroll snap ── */
+        let fired = false;
+        window.addEventListener('wheel', (e) => {
+            if (fired || e.deltaY <= 0 || window.scrollY > 50) return;
+            fired = true; e.preventDefault();
+            document.getElementById('about').scrollIntoView({ behavior: 'auto', block: 'start' });
+        }, { passive: false });
+
+        /* ── Scroll reveal ── */
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObs.unobserve(entry.target); } });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        /* ── Animated about text ── */
+        const aboutPara = document.getElementById('aboutText');
+        if (aboutPara) {
+            const rawText = aboutPara.textContent.trim();
+            aboutPara.innerHTML = '';
+            Array.from(rawText).forEach(ch => {
+                const span = document.createElement('span');
+                span.textContent = ch === ' ' ? '\u00A0' : ch;
+                aboutPara.appendChild(span);
             });
+            const charSpans = aboutPara.querySelectorAll('span');
+            const total = charSpans.length;
+            window.addEventListener('scroll', () => {
+                const rect = aboutPara.getBoundingClientRect();
+                const viewH = window.innerHeight;
+                const progress = Math.max(0, Math.min(1, 1 - (rect.top - viewH * 0.2) / (viewH * 0.6)));
+                const lit = Math.floor(progress * total);
+                charSpans.forEach((s, i) => s.classList.toggle('lit', i < lit));
+            }, { passive: true });
+        }
 
-            // Mobile menu toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+        /* ── Certificate stacking ── */
+        const certEls = Array.from({ length: 9 }, (_, i) => document.getElementById('cert' + i)).filter(Boolean);
+        function updateCerts() {
+            certEls.forEach((card, i) => {
+                const rect = card.parentElement.getBoundingClientRect();
+                const progress = Math.max(0, Math.min(1, 1 - rect.top / window.innerHeight));
+                const targetScale = 1 - (certEls.length - 1 - i) * 0.025;
+                card.style.transform = `scale(${1 + (targetScale - 1) * progress})`;
             });
+        }
+        window.addEventListener('scroll', updateCerts, { passive: true });
+        updateCerts();
 
-            // Close mobile menu when clicking on a link
-            const navLinks = document.querySelectorAll('#mobile-menu a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
+        /* ── Project stacking ── */
+        const cardEls = Array.from({ length: 6 }, (_, i) => document.getElementById('card' + i)).filter(Boolean);
+        function updateCards() {
+            cardEls.forEach((card, i) => {
+                const rect = card.parentElement.getBoundingClientRect();
+                const progress = Math.max(0, Math.min(1, 1 - rect.top / window.innerHeight));
+                const targetScale = 1 - (cardEls.length - 1 - i) * 0.025;
+                card.style.transform = `scale(${1 + (targetScale - 1) * progress})`;
             });
+        }
+        window.addEventListener('scroll', updateCards, { passive: true });
+        updateCards();
 
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Particles.js for hero section
-            document.addEventListener('DOMContentLoaded', function () {
-
-            });
-        </script>
+        /* ── About corner images ── */
+        const corners = document.querySelectorAll('.about-corner');
+        const cornerObs = new IntersectionObserver(([e]) => {
+            if (e.isIntersecting) { corners.forEach(c => { c.style.opacity = '' }); cornerObs.disconnect(); }
+        }, { threshold: 0.1 });
+        cornerObs.observe(document.getElementById('about'));
+    </script>
 </body>
 
 </html>
-
-
